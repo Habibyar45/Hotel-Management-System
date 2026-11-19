@@ -44,6 +44,6 @@ It demonstrates how object-oriented programming concepts can be applied to solve
 •	Improved graphical user interface
 •	Hotel reports and statistics
 
-Author
+Author:
 Mohammad Nasirkhan Habibyar
 
