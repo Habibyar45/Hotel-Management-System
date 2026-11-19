@@ -1,0 +1,357 @@
+/* ===============================
+   GLOBAL
+   =============================== */
+
+
+.root {
+
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+
+    -fx-background-color: #f4f7fb;
+
+}
+
+
+
+
+
+/* ===============================
+   DASHBOARD CONTENT
+   =============================== */
+
+
+.content {
+
+    -fx-background-color: white;
+
+    -fx-background-radius: 15;
+
+    -fx-padding: 25;
+
+}
+
+
+
+
+
+/* ===============================
+   STAT CARDS
+   =============================== */
+
+
+.stat-card {
+
+
+    -fx-background-color: white;
+
+
+    -fx-background-radius: 15;
+
+
+    -fx-padding: 20;
+
+
+    -fx-pref-width: 200;
+
+
+    -fx-pref-height: 120;
+
+
+    -fx-effect:
+
+            dropshadow(
+                    gaussian,
+                    rgba(0,0,0,0.15),
+                    10,
+                    0,
+                    0,
+                    5
+            );
+
+}
+
+
+
+.stat-title {
+
+
+    -fx-font-size: 16px;
+
+    -fx-text-fill: #555555;
+
+
+}
+
+
+
+
+.stat-number {
+
+
+    -fx-font-size: 32px;
+
+
+    -fx-font-weight: bold;
+
+
+    -fx-text-fill: #1e3a8a;
+
+
+}
+
+
+
+
+
+/* ===============================
+   BUTTONS
+   =============================== */
+
+
+.button {
+
+
+    -fx-background-color: #2563eb;
+
+
+    -fx-text-fill: white;
+
+
+    -fx-background-radius: 8;
+
+
+    -fx-padding:
+
+            10 20 10 20;
+
+
+    -fx-font-size: 14px;
+
+
+}
+
+
+
+.button:hover {
+
+
+    -fx-background-color: #1d4ed8;
+
+
+}
+
+
+
+
+
+/* ===============================
+   TABLE
+   =============================== */
+
+
+.table-view {
+
+
+    -fx-background-radius: 12;
+
+
+    -fx-border-radius: 12;
+
+
+    -fx-border-color: #e5e7eb;
+
+
+}
+
+
+
+
+.table-view .column-header {
+
+
+    -fx-background-color: #2563eb;
+
+
+}
+
+
+
+.table-view .column-header .label {
+
+
+    -fx-text-fill: white;
+
+
+    -fx-font-weight: bold;
+
+
+}
+
+
+
+
+
+.table-row-cell {
+
+
+    -fx-padding: 8;
+
+
+}
+
+
+
+.table-row-cell:selected {
+
+
+    -fx-background-color: #dbeafe;
+
+
+}
+
+
+
+
+
+/* ===============================
+   LABELS
+   =============================== */
+
+
+.label {
+
+
+    -fx-text-fill: #1f2937;
+
+
+}
+
+/* ===============================
+   SIDEBAR
+   =============================== */
+
+
+.sidebar {
+
+
+    -fx-background-color:#1e293b;
+
+
+}
+
+
+
+.sidebar-user {
+
+
+    -fx-text-fill:white;
+
+
+    -fx-font-size:20px;
+
+
+    -fx-font-weight:bold;
+
+
+}
+
+
+
+
+
+.sidebar-button {
+
+
+    -fx-background-color:transparent;
+
+
+    -fx-text-fill:white;
+
+
+    -fx-alignment:center-left;
+
+
+    -fx-font-size:15px;
+
+
+}
+
+
+
+.sidebar-button:hover {
+
+
+    -fx-background-color:#334155;
+
+
+}
+
+
+
+
+
+
+/* ===============================
+   TOP BAR
+   =============================== */
+
+
+.topbar {
+
+
+    -fx-background-color:white;
+
+
+    -fx-padding:15;
+
+
+    -fx-effect:
+
+            dropshadow(
+                    gaussian,
+                    rgba(0,0,0,0.1),
+                    8,
+                    0,
+                    0,
+                    3
+            );
+
+
+}
+
+
+
+
+
+.top-title {
+
+
+    -fx-font-size:22px;
+
+
+    -fx-font-weight:bold;
+
+
+}
+
+
+
+
+
+.logout-button {
+
+
+    -fx-background-color: #dcd326;
+
+
+}
+
+
+
+.logout-button:hover {
+
+
+    -fx-background-color: #dcd326;
+
+
+}
