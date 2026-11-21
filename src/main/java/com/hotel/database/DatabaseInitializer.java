@@ -7,26 +7,19 @@ import com.hotel.repository.UserRepository;
 import com.hotel.util.PasswordUtil;
 
 
-
 public class DatabaseInitializer {
 
 
-    public static void initialize(){
+    public static void initialize() {
 
-
-        try{
-
+        try {
 
             DatabaseManager.getConnection();
-
-
 
             createAdminUser();
 
 
-
-        }
-        catch(Exception e){
+        } catch (Exception e) {
 
             e.printStackTrace();
 
@@ -36,43 +29,28 @@ public class DatabaseInitializer {
     }
 
 
-
-
-
-
-    private static void createAdminUser(){
-
+    private static void createAdminUser() {
 
         UserRepository repository =
                 new UserRepository();
-
-
 
         User existing =
                 repository.findByUsername(
                         "admin"
                 );
 
-
-
-        if(existing != null){
+        if (existing != null) {
 
             return;
 
         }
 
-
-
         User admin =
                 new User();
-
-
 
         admin.setUsername(
                 "admin"
         );
-
-
 
         admin.setPassword(
 
@@ -82,24 +60,17 @@ public class DatabaseInitializer {
 
         );
 
-
-
         admin.setFullName(
                 "System Administrator"
         );
-
-
 
         admin.setRole(
                 UserRole.ADMIN
         );
 
-
-
         repository.save(
                 admin
         );
-
 
         System.out.println(
                 "Admin user created"

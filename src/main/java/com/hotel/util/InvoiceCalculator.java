@@ -7,16 +7,12 @@ import com.hotel.model.Reservation;
 import java.time.temporal.ChronoUnit;
 
 
-
 public class InvoiceCalculator {
-
 
 
     public static double calculate(
             Reservation reservation
-    ){
-
-
+    ) {
 
         long nights =
                 ChronoUnit.DAYS.between(
@@ -27,15 +23,11 @@ public class InvoiceCalculator {
 
                 );
 
-
-
-        if(nights <= 0){
+        if (nights <= 0) {
 
             nights = 1;
 
         }
-
-
 
         return nights *
 

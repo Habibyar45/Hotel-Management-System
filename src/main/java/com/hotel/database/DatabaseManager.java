@@ -7,78 +7,55 @@ import java.io.InputStreamReader;
 import java.sql.*;
 
 
-
 public class DatabaseManager {
-
 
 
     private static final String URL =
             "jdbc:sqlite:hotel.db";
 
 
-
-
-
     public static Connection getConnection()
             throws SQLException {
-
 
         Connection connection =
                 DriverManager.getConnection(URL);
 
-
         initializeDatabase(connection);
-
 
         return connection;
 
     }
 
 
-
-
-
-
-
     private static void initializeDatabase(
             Connection connection
-    ){
+    ) {
 
-
-        try{
-
+        try {
 
             Statement statement =
                     connection.createStatement();
-
-
 
             ResultSet result =
                     statement.executeQuery(
 
                             """
-                            SELECT name
-                            FROM sqlite_master
-                            WHERE type='table'
-                            """
+                                    SELECT name
+                                    FROM sqlite_master
+                                    WHERE type='table'
+                                    """
 
                     );
-
-
 
             boolean hasTables =
                     result.next();
 
-
-
-            if(!hasTables){
-
+            if (!hasTables) {
 
                 executeSQLFile(
                         connection,
                         "/schema.sql"
                 );
-
 
                 executeSQLFile(
                         connection,
@@ -89,9 +66,7 @@ public class DatabaseManager {
             }
 
 
-
-        }
-        catch(Exception e){
+        } catch (Exception e) {
 
             e.printStackTrace();
 
@@ -99,11 +74,6 @@ public class DatabaseManager {
 
 
     }
-
-
-
-
-
 
 
     private static void executeSQLFile(
@@ -115,16 +85,11 @@ public class DatabaseManager {
     )
             throws Exception {
 
-
-
         InputStream input =
                 DatabaseManager.class
                         .getResourceAsStream(file);
 
-
-
-        if(input == null){
-
+        if (input == null) {
 
             throw new RuntimeException(
                     "SQL Datei nicht gefunden: "
@@ -133,10 +98,6 @@ public class DatabaseManager {
 
 
         }
-
-
-
-
 
         BufferedReader reader =
                 new BufferedReader(
@@ -147,50 +108,33 @@ public class DatabaseManager {
 
                 );
 
-
-
         StringBuilder sql =
                 new StringBuilder();
 
-
-
         String line;
 
-
-
-        while(
+        while (
                 (line = reader.readLine())
                         != null
-        ){
-
+        ) {
 
             sql.append(line);
-
 
             sql.append("\n");
 
 
         }
 
-
-
-
         String[] commands =
                 sql.toString()
                         .split(";");
 
-
-
         Statement statement =
                 connection.createStatement();
 
+        for (String command : commands) {
 
-
-        for(String command : commands){
-
-
-            if(!command.trim().isEmpty()){
-
+            if (!command.trim().isEmpty()) {
 
                 statement.execute(
                         command

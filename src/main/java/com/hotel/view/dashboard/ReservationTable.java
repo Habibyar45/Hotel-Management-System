@@ -10,18 +10,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 
-
 public class ReservationTable {
 
 
-
-    public TableView<Reservation> create(){
-
-
+    public TableView<Reservation> create() {
 
         TableView<Reservation> table =
                 new TableView<>();
-
 
         table.setPrefHeight(250);
 
@@ -29,16 +24,10 @@ public class ReservationTable {
                 new Insets(10)
         );
 
-
-
-
-        TableColumn<Reservation,String> guestColumn =
+        TableColumn<Reservation, String> guestColumn =
                 new TableColumn<>("Gast");
 
-
-
         guestColumn.setCellValueFactory(cell ->
-
 
                 new SimpleStringProperty(
 
@@ -58,21 +47,12 @@ public class ReservationTable {
 
         );
 
-
         guestColumn.setPrefWidth(180);
 
-
-
-
-
-
-        TableColumn<Reservation,String> roomColumn =
+        TableColumn<Reservation, String> roomColumn =
                 new TableColumn<>("Zimmer");
 
-
-
         roomColumn.setCellValueFactory(cell ->
-
 
                 new SimpleStringProperty(
 
@@ -84,23 +64,12 @@ public class ReservationTable {
 
         );
 
-
         roomColumn.setPrefWidth(100);
 
-
-
-
-
-
-
-
-        TableColumn<Reservation,String> checkInColumn =
+        TableColumn<Reservation, String> checkInColumn =
                 new TableColumn<>("Check-In");
 
-
-
         checkInColumn.setCellValueFactory(cell ->
-
 
                 new SimpleStringProperty(
 
@@ -112,23 +81,12 @@ public class ReservationTable {
 
         );
 
-
         checkInColumn.setPrefWidth(130);
 
-
-
-
-
-
-
-
-        TableColumn<Reservation,String> checkOutColumn =
+        TableColumn<Reservation, String> checkOutColumn =
                 new TableColumn<>("Check-Out");
 
-
-
         checkOutColumn.setCellValueFactory(cell ->
-
 
                 new SimpleStringProperty(
 
@@ -140,22 +98,12 @@ public class ReservationTable {
 
         );
 
-
         checkOutColumn.setPrefWidth(130);
 
-
-
-
-
-
-
-        TableColumn<Reservation,String> statusColumn =
+        TableColumn<Reservation, String> statusColumn =
                 new TableColumn<>("Status");
 
-
-
         statusColumn.setCellValueFactory(cell ->
-
 
                 new SimpleStringProperty(
 
@@ -167,13 +115,7 @@ public class ReservationTable {
 
         );
 
-
         statusColumn.setPrefWidth(150);
-
-
-
-
-
 
         table.getColumns()
                 .addAll(
@@ -190,16 +132,8 @@ public class ReservationTable {
 
                 );
 
-
-
-
-
-
         ReservationRepository repository =
                 new ReservationRepository();
-
-
-
 
         table.getItems()
                 .addAll(
@@ -207,10 +141,6 @@ public class ReservationTable {
                         repository.findAll()
 
                 );
-
-
-
-
 
         return table;
 

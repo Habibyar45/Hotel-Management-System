@@ -5,15 +5,13 @@ import com.hotel.model.User;
 import com.hotel.repository.UserRepository;
 
 
-
 public class AuthService {
 
 
     private final UserRepository userRepository;
 
 
-
-    public AuthService(){
+    public AuthService() {
 
         userRepository =
                 new UserRepository();
@@ -21,43 +19,29 @@ public class AuthService {
     }
 
 
-
-
-
     public boolean login(
             String username,
             String password
-    ){
-
-
+    ) {
 
         User user =
                 userRepository
                         .findByUsername(username);
 
-
-
-        if(user == null){
+        if (user == null) {
 
             return false;
 
         }
 
-
-
-        if(user.getPassword()
-                .equals(password)){
-
-
+        if (user.getPassword()
+                .equals(password)) {
 
             UserSession.login(user);
-
 
             return true;
 
         }
-
-
 
         return false;
 
@@ -65,12 +49,7 @@ public class AuthService {
     }
 
 
-
-
-
-
-    public User getCurrentUser(){
-
+    public User getCurrentUser() {
 
         return UserSession.getCurrentUser();
 

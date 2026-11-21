@@ -15,11 +15,9 @@ public class Room {
     private RoomStatus status;
 
 
-
-    public Room(){
+    public Room() {
 
     }
-
 
 
     public Room(
@@ -27,7 +25,7 @@ public class Room {
             RoomType roomType,
             double price,
             RoomStatus status
-    ){
+    ) {
 
         this.roomNumber = roomNumber;
         this.roomType = roomType;
@@ -35,7 +33,6 @@ public class Room {
         this.status = status;
 
     }
-
 
 
     public Room(
@@ -44,7 +41,7 @@ public class Room {
             RoomType roomType,
             double price,
             RoomStatus status
-    ){
+    ) {
 
         this.roomId = roomId;
         this.roomNumber = roomNumber;
@@ -53,7 +50,6 @@ public class Room {
         this.status = status;
 
     }
-
 
 
     public int getRoomId() {
@@ -106,9 +102,8 @@ public class Room {
     }
 
 
-
     @Override
-    public String toString(){
+    public String toString() {
 
         return
                 "Room " + roomNumber +

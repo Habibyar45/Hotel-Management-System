@@ -15,7 +15,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
 
-
 public class CheckInOutView {
 
 
@@ -26,21 +25,16 @@ public class CheckInOutView {
     private final CheckOutService checkOutService;
 
 
-
     private TableView<Reservation> table;
 
 
-
-    public CheckInOutView(){
-
+    public CheckInOutView() {
 
         reservationRepository =
                 new ReservationRepository();
 
-
         roomRepository =
                 new RoomRepository();
-
 
         checkOutService =
                 new CheckOutService();
@@ -49,73 +43,43 @@ public class CheckInOutView {
     }
 
 
-
-
-
-
-
-    public VBox getRoot(){
-
+    public VBox getRoot() {
 
         VBox root =
                 new VBox(20);
 
-
-
         root.setStyle(
                 "-fx-padding:30;"
         );
-
-
 
         Label title =
                 new Label(
                         "Check-in / Check-out"
                 );
 
-
         title.setStyle(
                 "-fx-font-size:25px;"
         );
 
-
-
-
-
         table =
                 new TableView<>();
 
-
         createColumns();
 
-
-
         loadData();
-
-
-
-
 
         Button checkIn =
                 new Button(
                         "Check-In"
                 );
 
-
-
-
-        checkIn.setOnAction(e->{
-
+        checkIn.setOnAction(e -> {
 
             Reservation selected =
                     table.getSelectionModel()
                             .getSelectedItem();
 
-
-
-            if(selected != null){
-
-
+            if (selected != null) {
 
                 reservationRepository.updateStatus(
 
@@ -124,8 +88,6 @@ public class CheckInOutView {
                         ReservationStatus.CHECKED_IN
 
                 );
-
-
 
                 roomRepository.updateStatus(
 
@@ -136,8 +98,6 @@ public class CheckInOutView {
 
                 );
 
-
-
                 loadData();
 
 
@@ -146,31 +106,18 @@ public class CheckInOutView {
 
         });
 
-
-
-
-
-
-
         Button checkOut =
                 new Button(
                         "Check-Out"
                 );
 
-
-
-        checkOut.setOnAction(e->{
-
+        checkOut.setOnAction(e -> {
 
             Reservation selected =
                     table.getSelectionModel()
                             .getSelectedItem();
 
-
-
-            if(selected != null){
-
-
+            if (selected != null) {
 
                 checkOutService.checkOut(
 
@@ -181,8 +128,6 @@ public class CheckInOutView {
 
                 );
 
-
-
                 loadData();
 
 
@@ -191,16 +136,8 @@ public class CheckInOutView {
 
         });
 
-
-
-
-
-
-
         HBox buttons =
                 new HBox(15);
-
-
 
         buttons.getChildren()
                 .addAll(
@@ -210,11 +147,6 @@ public class CheckInOutView {
                         checkOut
 
                 );
-
-
-
-
-
 
         root.getChildren()
                 .addAll(
@@ -227,31 +159,18 @@ public class CheckInOutView {
 
                 );
 
-
-
         return root;
 
 
     }
 
 
+    private void createColumns() {
 
-
-
-
-
-
-
-    private void createColumns(){
-
-
-
-        TableColumn<Reservation,String> guest =
+        TableColumn<Reservation, String> guest =
                 new TableColumn<>(
                         "Gast"
                 );
-
-
 
         guest.setCellValueFactory(
 
@@ -263,7 +182,7 @@ public class CheckInOutView {
                                         .getGuest()
                                         .getFirstName()
 
-                                        +" "+
+                                        + " " +
 
                                         cell.getValue()
                                                 .getGuest()
@@ -273,18 +192,10 @@ public class CheckInOutView {
 
         );
 
-
-
-
-
-
-
-        TableColumn<Reservation,String> room =
+        TableColumn<Reservation, String> room =
                 new TableColumn<>(
                         "Zimmer"
                 );
-
-
 
         room.setCellValueFactory(
 
@@ -300,18 +211,10 @@ public class CheckInOutView {
 
         );
 
-
-
-
-
-
-
-        TableColumn<Reservation,String> status =
+        TableColumn<Reservation, String> status =
                 new TableColumn<>(
                         "Status"
                 );
-
-
 
         status.setCellValueFactory(
 
@@ -327,10 +230,6 @@ public class CheckInOutView {
 
         );
 
-
-
-
-
         table.getColumns()
                 .addAll(
 
@@ -343,17 +242,10 @@ public class CheckInOutView {
                 );
 
 
-
     }
 
 
-
-
-
-
-
-    private void loadData(){
-
+    private void loadData() {
 
         table.setItems(
 

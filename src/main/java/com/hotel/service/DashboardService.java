@@ -7,9 +7,7 @@ import com.hotel.repository.ReservationRepository;
 import com.hotel.repository.InvoiceRepository;
 
 
-
 public class DashboardService {
-
 
 
     private final GuestRepository guestRepository;
@@ -21,22 +19,16 @@ public class DashboardService {
     private final InvoiceRepository invoiceRepository;
 
 
-
-
-    public DashboardService(){
-
+    public DashboardService() {
 
         guestRepository =
                 new GuestRepository();
 
-
         roomRepository =
                 new RoomRepository();
 
-
         reservationRepository =
                 new ReservationRepository();
-
 
         invoiceRepository =
                 new InvoiceRepository();
@@ -45,13 +37,7 @@ public class DashboardService {
     }
 
 
-
-
-
-
-
-    public int getGuestCount(){
-
+    public int getGuestCount() {
 
         return guestRepository
                 .findAll()
@@ -61,13 +47,7 @@ public class DashboardService {
     }
 
 
-
-
-
-
-
-    public int getRoomCount(){
-
+    public int getRoomCount() {
 
         return roomRepository
                 .findAll()
@@ -77,13 +57,7 @@ public class DashboardService {
     }
 
 
-
-
-
-
-
-    public int getAvailableRooms(){
-
+    public int getAvailableRooms() {
 
         return roomRepository
                 .findAvailableRooms()
@@ -93,13 +67,7 @@ public class DashboardService {
     }
 
 
-
-
-
-
-
-    public int getReservationCount(){
-
+    public int getReservationCount() {
 
         return reservationRepository
                 .findAll()
@@ -109,13 +77,7 @@ public class DashboardService {
     }
 
 
-
-
-
-
-
-    public int getInvoiceCount(){
-
+    public int getInvoiceCount() {
 
         return invoiceRepository
                 .findAll()
@@ -123,7 +85,6 @@ public class DashboardService {
 
 
     }
-
 
 
 }

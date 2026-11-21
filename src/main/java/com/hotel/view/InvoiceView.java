@@ -11,9 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
 
-
 public class InvoiceView {
-
 
 
     private final InvoiceRepository repository;
@@ -22,9 +20,7 @@ public class InvoiceView {
     private TableView<Invoice> table;
 
 
-
-    public InvoiceView(){
-
+    public InvoiceView() {
 
         repository =
                 new InvoiceRepository();
@@ -33,77 +29,43 @@ public class InvoiceView {
     }
 
 
-
-
-
-
-
-    public VBox getRoot(){
-
+    public VBox getRoot() {
 
         VBox root =
                 new VBox(20);
 
-
-
         root.setStyle(
                 "-fx-padding:30;"
         );
-
-
 
         Label title =
                 new Label(
                         "Rechnungs- und Zahlungssystem"
                 );
 
-
-
         title.setStyle(
                 "-fx-font-size:25px;"
         );
 
-
-
-
-
         table =
                 new TableView<>();
 
-
-
         createColumns();
 
-
-
         loadData();
-
-
-
-
-
-
 
         Button paid =
                 new Button(
                         "Als bezahlt markieren"
                 );
 
-
-
-
-        paid.setOnAction(e->{
-
+        paid.setOnAction(e -> {
 
             Invoice selected =
                     table.getSelectionModel()
                             .getSelectedItem();
 
-
-
-            if(selected != null){
-
-
+            if (selected != null) {
 
                 repository.updatePaymentStatus(
 
@@ -113,8 +75,6 @@ public class InvoiceView {
 
                 );
 
-
-
                 loadData();
 
 
@@ -123,37 +83,20 @@ public class InvoiceView {
 
         });
 
-
-
-
-
-
-
         Button refresh =
                 new Button(
                         "Aktualisieren"
                 );
 
-
-
-        refresh.setOnAction(e->{
-
+        refresh.setOnAction(e -> {
 
             loadData();
 
 
         });
 
-
-
-
-
-
-
         HBox buttons =
                 new HBox(15);
-
-
 
         buttons.getChildren()
                 .addAll(
@@ -163,11 +106,6 @@ public class InvoiceView {
                         refresh
 
                 );
-
-
-
-
-
 
         root.getChildren()
                 .addAll(
@@ -180,31 +118,18 @@ public class InvoiceView {
 
                 );
 
-
-
         return root;
 
 
     }
 
 
+    private void createColumns() {
 
-
-
-
-
-
-
-    private void createColumns(){
-
-
-
-        TableColumn<Invoice,String> guest =
+        TableColumn<Invoice, String> guest =
                 new TableColumn<>(
                         "Gast"
                 );
-
-
 
         guest.setCellValueFactory(
 
@@ -217,7 +142,7 @@ public class InvoiceView {
                                         .getGuest()
                                         .getFirstName()
 
-                                        +" "+
+                                        + " " +
 
                                         cell.getValue()
                                                 .getReservation()
@@ -228,20 +153,10 @@ public class InvoiceView {
 
         );
 
-
-
-
-
-
-
-
-
-        TableColumn<Invoice,String> room =
+        TableColumn<Invoice, String> room =
                 new TableColumn<>(
                         "Zimmer"
                 );
-
-
 
         room.setCellValueFactory(
 
@@ -258,20 +173,10 @@ public class InvoiceView {
 
         );
 
-
-
-
-
-
-
-
-
-        TableColumn<Invoice,String> amount =
+        TableColumn<Invoice, String> amount =
                 new TableColumn<>(
                         "Betrag"
                 );
-
-
 
         amount.setCellValueFactory(
 
@@ -281,27 +186,16 @@ public class InvoiceView {
 
                                 cell.getValue()
                                         .getAmount()
-                                        +" €"
+                                        + " €"
 
                         )
 
         );
 
-
-
-
-
-
-
-
-
-
-        TableColumn<Invoice,String> status =
+        TableColumn<Invoice, String> status =
                 new TableColumn<>(
                         "Status"
                 );
-
-
 
         status.setCellValueFactory(
 
@@ -316,11 +210,6 @@ public class InvoiceView {
                         )
 
         );
-
-
-
-
-
 
         table.getColumns()
                 .addAll(
@@ -339,13 +228,7 @@ public class InvoiceView {
     }
 
 
-
-
-
-
-
-    private void loadData(){
-
+    private void loadData() {
 
         table.setItems(
 

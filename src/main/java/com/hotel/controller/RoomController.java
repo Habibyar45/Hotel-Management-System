@@ -9,18 +9,13 @@ import com.hotel.service.RoomService;
 import java.util.List;
 
 
-
 public class RoomController {
-
 
 
     private final RoomService service;
 
 
-
-
-    public RoomController(){
-
+    public RoomController() {
 
         service =
                 new RoomService();
@@ -29,15 +24,9 @@ public class RoomController {
     }
 
 
-
-
-
-
-
     public void addRoom(
             Room room
-    ){
-
+    ) {
 
         service.createRoom(room);
 
@@ -45,13 +34,7 @@ public class RoomController {
     }
 
 
-
-
-
-
-
-    public List<Room> getRooms(){
-
+    public List<Room> getRooms() {
 
         return service.getRooms();
 
@@ -59,13 +42,7 @@ public class RoomController {
     }
 
 
-
-
-
-
-
-    public List<Room> getAvailableRooms(){
-
+    public List<Room> getAvailableRooms() {
 
         return service.getAvailableRooms();
 
@@ -73,16 +50,10 @@ public class RoomController {
     }
 
 
-
-
-
-
-
     public void updateStatus(
             int roomId,
             RoomStatus status
-    ){
-
+    ) {
 
         service.changeStatus(
                 roomId,
@@ -93,19 +64,14 @@ public class RoomController {
     }
 
 
-
-
-
     public void deleteRoom(
             int id
-    ){
-
+    ) {
 
         service.deleteRoom(id);
 
 
     }
-
 
 
 }

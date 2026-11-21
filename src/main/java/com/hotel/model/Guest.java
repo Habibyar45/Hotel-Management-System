@@ -28,7 +28,7 @@ public class Guest {
             String email,
             String phone,
             String address
-    ){
+    ) {
 
         this.firstName = firstName;
         this.lastName = lastName;
@@ -46,7 +46,7 @@ public class Guest {
             String email,
             String phone,
             String address
-    ){
+    ) {
 
         this.guestId = guestId;
         this.firstName = firstName;
@@ -119,7 +119,7 @@ public class Guest {
 
 
     @Override
-    public String toString(){
+    public String toString() {
 
         return firstName + " " + lastName;
 

@@ -18,7 +18,6 @@ import javafx.scene.layout.*;
 import java.time.LocalDate;
 
 
-
 public class ReservationView {
 
 
@@ -29,21 +28,16 @@ public class ReservationView {
     private final ReservationRepository reservationRepository;
 
 
-
     private TableView<Reservation> table;
 
 
-
-    public ReservationView(){
-
+    public ReservationView() {
 
         guestRepository =
                 new GuestRepository();
 
-
         roomRepository =
                 new RoomRepository();
-
 
         reservationRepository =
                 new ReservationRepository();
@@ -52,43 +46,26 @@ public class ReservationView {
     }
 
 
-
-
-
-
-    public VBox getRoot(){
-
-
+    public VBox getRoot() {
 
         VBox root =
                 new VBox(20);
 
-
-
         root.setStyle(
                 "-fx-padding:30;"
         );
-
-
 
         Label title =
                 new Label(
                         "Reservierungssystem"
                 );
 
-
         title.setStyle(
                 "-fx-font-size:25px;"
         );
 
-
-
-
-
         ComboBox<Guest> guests =
                 new ComboBox<>();
-
-
 
         guests.setItems(
 
@@ -100,20 +77,12 @@ public class ReservationView {
 
         );
 
-
-
         guests.setPromptText(
                 "Gast auswählen"
         );
 
-
-
-
-
         ComboBox<Room> rooms =
                 new ComboBox<>();
-
-
 
         rooms.setItems(
 
@@ -125,34 +94,19 @@ public class ReservationView {
 
         );
 
-
         rooms.setPromptText(
                 "Zimmer auswählen"
         );
 
-
-
-
-
-
-
         DatePicker checkIn =
                 new DatePicker();
-
-
 
         checkIn.setValue(
                 LocalDate.now()
         );
 
-
-
-
-
         DatePicker checkOut =
                 new DatePicker();
-
-
 
         checkOut.setValue(
 
@@ -161,28 +115,15 @@ public class ReservationView {
 
         );
 
-
-
-
-
-
-
         Button save =
                 new Button(
                         "Reservierung erstellen"
                 );
 
-
-
-        save.setOnAction(e->{
-
-
+        save.setOnAction(e -> {
 
             Reservation reservation =
                     new Reservation();
-
-
-
 
             reservation.setGuest(
 
@@ -190,15 +131,11 @@ public class ReservationView {
 
             );
 
-
-
             reservation.setRoom(
 
                     rooms.getValue()
 
             );
-
-
 
             reservation.setCheckIn(
 
@@ -206,15 +143,11 @@ public class ReservationView {
 
             );
 
-
-
             reservation.setCheckOut(
 
                     checkOut.getValue()
 
             );
-
-
 
             reservation.setStatus(
 
@@ -222,50 +155,26 @@ public class ReservationView {
 
             );
 
-
-
-
-
             reservationRepository.save(
 
                     reservation
 
             );
 
-
-
             loadTable();
-
 
 
         });
 
-
-
-
-
-
-
-
         table =
                 new TableView<>();
 
-
         createColumns();
-
-
 
         loadTable();
 
-
-
-
-
-
         HBox form =
                 new HBox(10);
-
-
 
         form.getChildren()
                 .addAll(
@@ -282,12 +191,6 @@ public class ReservationView {
 
                 );
 
-
-
-
-
-
-
         root.getChildren()
                 .addAll(
 
@@ -299,33 +202,18 @@ public class ReservationView {
 
                 );
 
-
-
-
         return root;
-
 
 
     }
 
 
+    private void createColumns() {
 
-
-
-
-
-
-
-    private void createColumns(){
-
-
-
-        TableColumn<Reservation,String> guest =
+        TableColumn<Reservation, String> guest =
                 new TableColumn<>(
                         "Gast"
                 );
-
-
 
         guest.setCellValueFactory(
 
@@ -337,7 +225,7 @@ public class ReservationView {
                                         .getGuest()
                                         .getFirstName()
 
-                                        +" "
+                                        + " "
 
                                         +
 
@@ -349,17 +237,10 @@ public class ReservationView {
 
         );
 
-
-
-
-
-
-        TableColumn<Reservation,String> room =
+        TableColumn<Reservation, String> room =
                 new TableColumn<>(
                         "Zimmer"
                 );
-
-
 
         room.setCellValueFactory(
 
@@ -375,17 +256,10 @@ public class ReservationView {
 
         );
 
-
-
-
-
-
-        TableColumn<Reservation,String> from =
+        TableColumn<Reservation, String> from =
                 new TableColumn<>(
                         "Check-In"
                 );
-
-
 
         from.setCellValueFactory(
 
@@ -401,18 +275,10 @@ public class ReservationView {
 
         );
 
-
-
-
-
-
-
-        TableColumn<Reservation,String> to =
+        TableColumn<Reservation, String> to =
                 new TableColumn<>(
                         "Check-Out"
                 );
-
-
 
         to.setCellValueFactory(
 
@@ -428,17 +294,10 @@ public class ReservationView {
 
         );
 
-
-
-
-
-
-        TableColumn<Reservation,String> status =
+        TableColumn<Reservation, String> status =
                 new TableColumn<>(
                         "Status"
                 );
-
-
 
         status.setCellValueFactory(
 
@@ -453,9 +312,6 @@ public class ReservationView {
                         )
 
         );
-
-
-
 
         table.getColumns()
                 .addAll(
@@ -476,21 +332,10 @@ public class ReservationView {
     }
 
 
-
-
-
-
-
-
-
-    private void loadTable(){
-
-
+    private void loadTable() {
 
         table.getItems()
                 .clear();
-
-
 
         table.getItems()
                 .addAll(
@@ -501,7 +346,6 @@ public class ReservationView {
 
 
     }
-
 
 
 }

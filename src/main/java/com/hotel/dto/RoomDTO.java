@@ -1,7 +1,6 @@
 package com.hotel.dto;
 
 
-
 public class RoomDTO {
 
 
@@ -12,45 +11,42 @@ public class RoomDTO {
     private double price;
 
 
-
-    public String getRoomNumber(){
+    public String getRoomNumber() {
 
         return roomNumber;
 
     }
 
 
-    public void setRoomNumber(String roomNumber){
+    public void setRoomNumber(String roomNumber) {
 
         this.roomNumber = roomNumber;
 
     }
 
 
-
-    public String getRoomType(){
+    public String getRoomType() {
 
         return roomType;
 
     }
 
 
-    public void setRoomType(String roomType){
+    public void setRoomType(String roomType) {
 
         this.roomType = roomType;
 
     }
 
 
-
-    public double getPrice(){
+    public double getPrice() {
 
         return price;
 
     }
 
 
-    public void setPrice(double price){
+    public void setPrice(double price) {
 
         this.price = price;
 

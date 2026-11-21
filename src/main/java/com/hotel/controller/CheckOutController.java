@@ -4,17 +4,13 @@ package com.hotel.controller;
 import com.hotel.service.CheckOutService;
 
 
-
 public class CheckOutController {
-
 
 
     private final CheckOutService service;
 
 
-
-    public CheckOutController(){
-
+    public CheckOutController() {
 
         service =
                 new CheckOutService();
@@ -23,20 +19,13 @@ public class CheckOutController {
     }
 
 
-
-
-
-
-
     public void checkOut(
 
             int reservationId,
 
             int roomId
 
-    ){
-
-
+    ) {
 
         service.checkOut(
 

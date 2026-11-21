@@ -15,11 +15,9 @@ public class User {
     private UserRole role;
 
 
-
-    public User(){
+    public User() {
 
     }
-
 
 
     public User(
@@ -27,18 +25,17 @@ public class User {
             String password,
             String fullName,
             UserRole role
-    ){
+    ) {
 
-        this.username=username;
+        this.username = username;
 
-        this.password=password;
+        this.password = password;
 
         this.fullName = fullName;
 
-        this.role=role;
+        this.role = role;
 
     }
-
 
 
     public int getUserId() {
@@ -70,8 +67,13 @@ public class User {
         this.password = password;
     }
 
-    public String getFullName(){    return fullName;    }
-    public void setFullName(String fullName){this.fullName = fullName;}
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
     public UserRole getRole() {
         return role;

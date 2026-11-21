@@ -15,31 +15,23 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 
-
 public class Sidebar {
 
 
     private VBox root;
 
-    public VBox create(){
-
+    public VBox create() {
 
         VBox box =
                 new VBox(15);
 
-
-
         box.getStyleClass()
                 .add("sidebar");
-
-
 
         Label user =
                 new Label(
                         "Admin"
                 );
-
-
 
         Button dashboard =
                 new Button(
@@ -50,12 +42,10 @@ public class Sidebar {
                 new Button(
                         "Check-in / Check-out"
                 );
-        frontDesk.setOnAction(e->{
-
+        frontDesk.setOnAction(e -> {
 
             CheckInOutView view =
                     new CheckInOutView();
-
 
             Scene scene =
                     new Scene(
@@ -67,7 +57,6 @@ public class Sidebar {
                             800
 
                     );
-
 
             SceneManager.changeScene(
                     scene
@@ -81,55 +70,42 @@ public class Sidebar {
                         "Gäste"
                 );
 
-
-
         Button rooms =
                 new Button(
                         "Zimmer"
                 );
-
-
 
         Button reservations =
                 new Button(
                         "Reservierungen"
                 );
 
-
-
         Button invoices =
                 new Button(
                         "Rechnungen"
                 );
-
 
         Button logout =
                 new Button(
                         "Logout"
                 );
 
-        logout.setOnAction(e->{
-
+        logout.setOnAction(e -> {
 
             Platform.exit();
 
 
         });
 
-        dashboard.setOnAction(e->{
-
+        dashboard.setOnAction(e -> {
 
         });
 
-
-
-        guests.setOnAction(e->{
-
+        guests.setOnAction(e -> {
 
             GuestView view =
                     new GuestView();
 
-
             Scene scene =
                     new Scene(
                             view.getRoot(),
@@ -137,24 +113,16 @@ public class Sidebar {
                             800
                     );
 
-
             SceneManager.changeScene(scene);
 
 
         });
 
-
-
-
-
-        rooms.setOnAction(e->{
-
+        rooms.setOnAction(e -> {
 
             RoomView view =
                     new RoomView();
 
-
-
             Scene scene =
                     new Scene(
                             view.getRoot(),
@@ -162,25 +130,16 @@ public class Sidebar {
                             800
                     );
 
-
-
             SceneManager.changeScene(scene);
 
 
         });
 
-
-
-
-
-        reservations.setOnAction(e->{
-
+        reservations.setOnAction(e -> {
 
             ReservationView view =
                     new ReservationView();
 
-
-
             Scene scene =
                     new Scene(
                             view.getRoot(),
@@ -188,26 +147,16 @@ public class Sidebar {
                             800
                     );
 
-
-
             SceneManager.changeScene(scene);
 
 
         });
 
-
-
-
-
-
-        invoices.setOnAction(e->{
-
+        invoices.setOnAction(e -> {
 
             InvoiceView view =
                     new InvoiceView();
 
-
-
             Scene scene =
                     new Scene(
                             view.getRoot(),
@@ -215,17 +164,10 @@ public class Sidebar {
                             800
                     );
 
-
-
             SceneManager.changeScene(scene);
 
 
         });
-
-
-
-
-
 
         box.getChildren()
                 .addAll(
@@ -246,19 +188,16 @@ public class Sidebar {
 
                 );
 
-
-
         return box;
 
 
     }
 
-    public VBox getRoot(){
+    public VBox getRoot() {
 
         return root;
 
     }
-
 
 
 }

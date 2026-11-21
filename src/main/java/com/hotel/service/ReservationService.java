@@ -10,9 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 
-
 public class ReservationService {
-
 
 
     private final ReservationRepository reservationRepository;
@@ -20,14 +18,10 @@ public class ReservationService {
     private final RoomRepository roomRepository;
 
 
-
-
-    public ReservationService(){
-
+    public ReservationService() {
 
         reservationRepository =
                 new ReservationRepository();
-
 
         roomRepository =
                 new RoomRepository();
@@ -36,30 +30,19 @@ public class ReservationService {
     }
 
 
-
-
-
-
-
-
     public void createReservation(
             Reservation reservation
-    ){
-
-
+    ) {
 
         validate(
                 reservation
         );
 
-
-
-        if(
+        if (
                 reservation.getRoom()
                         .getStatus()
                         != RoomStatus.AVAILABLE
-        ){
-
+        ) {
 
             throw new RuntimeException(
                     "Zimmer ist nicht verfügbar"
@@ -68,13 +51,9 @@ public class ReservationService {
 
         }
 
-
-
         reservationRepository.save(
                 reservation
         );
-
-
 
         roomRepository.updateStatus(
                 reservation
@@ -88,14 +67,7 @@ public class ReservationService {
     }
 
 
-
-
-
-
-
-
-    public List<Reservation> getReservations(){
-
+    public List<Reservation> getReservations() {
 
         return reservationRepository
                 .findAll();
@@ -104,24 +76,16 @@ public class ReservationService {
     }
 
 
-
-
-
-
-
     public void cancelReservation(
             int reservationId,
             int roomId
-    ){
-
+    ) {
 
         reservationRepository.updateStatus(
                 reservationId,
 
                 ReservationStatus.CANCELLED
         );
-
-
 
         roomRepository.updateStatus(
                 roomId,
@@ -133,19 +97,11 @@ public class ReservationService {
     }
 
 
-
-
-
-
-
-
     private void validate(
             Reservation reservation
-    ){
+    ) {
 
-
-
-        if(reservation == null){
+        if (reservation == null) {
 
             throw new RuntimeException(
                     "Reservierung fehlt"
@@ -153,9 +109,7 @@ public class ReservationService {
 
         }
 
-
-
-        if(reservation.getGuest()==null){
+        if (reservation.getGuest() == null) {
 
             throw new RuntimeException(
                     "Gast fehlt"
@@ -163,10 +117,7 @@ public class ReservationService {
 
         }
 
-
-
-
-        if(reservation.getRoom()==null){
+        if (reservation.getRoom() == null) {
 
             throw new RuntimeException(
                     "Zimmer fehlt"
@@ -174,17 +125,12 @@ public class ReservationService {
 
         }
 
-
-
-
-
-        if(
+        if (
                 reservation.getCheckIn()
                         .isBefore(
                                 LocalDate.now()
                         )
-        ){
-
+        ) {
 
             throw new RuntimeException(
                     "Check-in Datum ungültig"
@@ -192,17 +138,12 @@ public class ReservationService {
 
         }
 
-
-
-
-
-        if(
+        if (
                 reservation.getCheckOut()
                         .isBefore(
                                 reservation.getCheckIn()
                         )
-        ){
-
+        ) {
 
             throw new RuntimeException(
                     "Check-out Datum ungültig"

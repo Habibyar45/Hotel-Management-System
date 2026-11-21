@@ -11,90 +11,57 @@ import com.hotel.javafx.SceneManager;
 import com.hotel.service.LoginService;
 
 
-
 public class LoginView {
-
 
 
     private VBox root;
 
 
-
     private final LoginService loginService;
 
 
-
-
-
-    public LoginView(Stage stage){
-
+    public LoginView(Stage stage) {
 
         SceneManager.setStage(stage);
-
 
         loginService =
                 new LoginService();
 
-
-
-
         root =
                 new VBox(15);
-
-
 
         root.setStyle(
                 "-fx-padding:40;"
         );
-
-
-
 
         Label title =
                 new Label(
                         "Hotel Login"
                 );
 
-
-
         TextField username =
                 new TextField();
-
 
         username.setPromptText(
                 "Username"
         );
 
-
-
-
         PasswordField password =
                 new PasswordField();
-
 
         password.setPromptText(
                 "Password"
         );
-
-
-
 
         Button login =
                 new Button(
                         "Login"
                 );
 
-
-
         Label message =
                 new Label();
 
-
-
-
-        login.setOnAction(e->{
-
-
+        login.setOnAction(e -> {
 
             boolean success =
                     loginService.login(
@@ -105,18 +72,10 @@ public class LoginView {
 
                     );
 
-
-
-
-            if(success){
-
-
+            if (success) {
 
                 DashboardView dashboard =
                         new DashboardView();
-
-
-
 
                 Scene scene =
                         new Scene(
@@ -129,19 +88,12 @@ public class LoginView {
 
                         );
 
-
-
-
                 SceneManager.changeScene(
                         scene
                 );
 
 
-
-            }
-
-            else{
-
+            } else {
 
                 message.setText(
                         "Username oder Passwort falsch!"
@@ -151,13 +103,7 @@ public class LoginView {
             }
 
 
-
         });
-
-
-
-
-
 
         root.getChildren()
                 .addAll(
@@ -178,11 +124,7 @@ public class LoginView {
     }
 
 
-
-
-
-
-    public VBox getRoot(){
+    public VBox getRoot() {
 
         return root;
 

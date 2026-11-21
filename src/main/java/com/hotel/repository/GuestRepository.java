@@ -20,11 +20,11 @@ public class GuestRepository {
 
         String sql =
                 """
-                INSERT INTO guests
-                (first_name,last_name,email,phone,address)
+                        INSERT INTO guests
+                        (first_name,last_name,email,phone,address)
 
-                VALUES (?,?,?,?,?)
-                """;
+                        VALUES (?,?,?,?,?)
+                        """;
 
 
 

@@ -9,17 +9,13 @@ import com.hotel.repository.RoomRepository;
 import java.util.List;
 
 
-
 public class RoomService {
 
 
     private final RoomRepository roomRepository;
 
 
-
-
-    public RoomService(){
-
+    public RoomService() {
 
         roomRepository =
                 new RoomRepository();
@@ -37,7 +33,7 @@ public class RoomService {
 
     public void createRoom(
             Room room
-    ){
+    ) {
 
         roomRepository.save(room);
 
@@ -53,8 +49,7 @@ public class RoomService {
         Alle Zimmer holen
     */
 
-    public List<Room> getRooms(){
-
+    public List<Room> getRooms() {
 
         return roomRepository.findAll();
 
@@ -65,8 +60,7 @@ public class RoomService {
     /*
         Verfügbare Zimmer laden
     */
-    public List<Room> getAvailableRooms(){
-
+    public List<Room> getAvailableRooms() {
 
         return roomRepository.findAvailableRooms();
 
@@ -86,8 +80,7 @@ public class RoomService {
 
             RoomStatus status
 
-    ){
-
+    ) {
 
         roomRepository.updateStatus(
 
@@ -115,8 +108,7 @@ public class RoomService {
 
             int roomId
 
-    ){
-
+    ) {
 
         roomRepository.delete(
 

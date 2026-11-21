@@ -8,18 +8,13 @@ import com.hotel.repository.GuestRepository;
 import java.util.List;
 
 
-
 public class GuestService {
-
 
 
     private final GuestRepository guestRepository;
 
 
-
-
-    public GuestService(){
-
+    public GuestService() {
 
         guestRepository =
                 new GuestRepository();
@@ -37,8 +32,7 @@ public class GuestService {
 
     public void createGuest(
             Guest guest
-    ){
-
+    ) {
 
         guestRepository.save(
                 guest
@@ -57,8 +51,7 @@ public class GuestService {
         Alle Gäste laden
     */
 
-    public List<Guest> getGuests(){
-
+    public List<Guest> getGuests() {
 
         return guestRepository.findAll();
 
@@ -79,8 +72,7 @@ public class GuestService {
 
             int guestId
 
-    ){
-
+    ) {
 
         guestRepository.delete(
                 guestId
@@ -101,8 +93,7 @@ public class GuestService {
 
             int guestId
 
-    ){
-
+    ) {
 
         return guestRepository.findById(
                 guestId
@@ -110,7 +101,6 @@ public class GuestService {
 
 
     }
-
 
 
 }

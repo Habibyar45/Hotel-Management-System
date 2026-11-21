@@ -10,9 +10,7 @@ public class DashboardView {
     private BorderPane root;
 
 
-
-    public DashboardView(){
-
+    public DashboardView() {
 
         createUI();
 
@@ -20,11 +18,7 @@ public class DashboardView {
     }
 
 
-
-
-
-    private void createUI(){
-
+    private void createUI() {
 
         root =
                 new BorderPane();
@@ -37,8 +31,6 @@ public class DashboardView {
 
         Sidebar sidebar =
                 new Sidebar();
-
-
 
         root.setLeft(
                 sidebar.getRoot()
@@ -54,24 +46,15 @@ public class DashboardView {
         DashboardContent content =
                 new DashboardContent();
 
-
-
         root.setCenter(
                 content.getRoot()
         );
 
 
-
     }
 
 
-
-
-
-
-
-    public BorderPane getRoot(){
-
+    public BorderPane getRoot() {
 
         return root;
 

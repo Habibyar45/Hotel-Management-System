@@ -7,19 +7,14 @@ import javafx.stage.Stage;
 import com.hotel.view.LoginView;
 
 
-
 public class LoginApplication extends Application {
 
 
-
     @Override
-    public void start(Stage stage){
-
+    public void start(Stage stage) {
 
         LoginView view =
                 new LoginView(stage);
-
-
 
         Scene scene =
                 new Scene(
@@ -27,8 +22,6 @@ public class LoginApplication extends Application {
                         400,
                         300
                 );
-
-
 
         scene.getStylesheets()
                 .add(
@@ -39,15 +32,11 @@ public class LoginApplication extends Application {
                                 .toExternalForm()
                 );
 
-
-
         stage.setTitle(
                 "Hotel Management System"
         );
 
-
         stage.setScene(scene);
-
 
         stage.show();
 

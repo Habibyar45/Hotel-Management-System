@@ -8,18 +8,13 @@ import com.hotel.service.ReservationService;
 import java.util.List;
 
 
-
 public class ReservationController {
-
 
 
     private final ReservationService service;
 
 
-
-
-    public ReservationController(){
-
+    public ReservationController() {
 
         service =
                 new ReservationService();
@@ -27,15 +22,9 @@ public class ReservationController {
     }
 
 
-
-
-
-
-
     public void create(
             Reservation reservation
-    ){
-
+    ) {
 
         service.createReservation(
                 reservation
@@ -45,13 +34,7 @@ public class ReservationController {
     }
 
 
-
-
-
-
-
-    public List<Reservation> getAll(){
-
+    public List<Reservation> getAll() {
 
         return service.getReservations();
 
@@ -59,16 +42,10 @@ public class ReservationController {
     }
 
 
-
-
-
-
-
     public void cancel(
             int reservationId,
             int roomId
-    ){
-
+    ) {
 
         service.cancelReservation(
                 reservationId,
@@ -77,7 +54,6 @@ public class ReservationController {
 
 
     }
-
 
 
 }

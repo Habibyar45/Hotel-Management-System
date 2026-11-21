@@ -12,7 +12,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
 
-
 public class GuestView {
 
 
@@ -25,9 +24,7 @@ public class GuestView {
     private ObservableList<Guest> data;
 
 
-
-    public GuestView(){
-
+    public GuestView() {
 
         repository =
                 new GuestRepository();
@@ -36,154 +33,107 @@ public class GuestView {
     }
 
 
-
-
-    public VBox getRoot(){
-
+    public VBox getRoot() {
 
         VBox root =
                 new VBox(20);
 
-
         root.setStyle(
                 "-fx-padding:30;"
         );
-
-
 
         Label title =
                 new Label(
                         "Gästeverwaltung"
                 );
 
-
         title.setStyle(
                 "-fx-font-size:25px;"
         );
 
-
-
         table =
                 new TableView<>();
 
-
         createColumns();
-
-
 
         loadData();
 
-
-
-
         TextField firstName =
                 new TextField();
-
 
         firstName.setPromptText(
                 "Vorname"
         );
 
-
-
         TextField lastName =
                 new TextField();
-
 
         lastName.setPromptText(
                 "Nachname"
         );
 
-
-
         TextField email =
                 new TextField();
-
 
         email.setPromptText(
                 "Email"
         );
-
-
 
         Button save =
                 new Button(
                         "Gast speichern"
                 );
 
-
-
-        save.setOnAction(e->{
-
+        save.setOnAction(e -> {
 
             Guest guest =
                     new Guest();
-
 
             guest.setFirstName(
                     firstName.getText()
             );
 
-
             guest.setLastName(
                     lastName.getText()
             );
-
 
             guest.setEmail(
                     email.getText()
             );
 
-
-
             guest.setPhone(
                     ""
             );
-
 
             guest.setAddress(
                     ""
             );
 
-
-
             repository.save(
                     guest
             );
-
 
             loadData();
 
 
         });
 
-
-
-
-
         Button delete =
                 new Button(
                         "Gast löschen"
                 );
 
-
-
-        delete.setOnAction(e->{
-
+        delete.setOnAction(e -> {
 
             Guest selected =
                     table.getSelectionModel()
                             .getSelectedItem();
 
-
-
-            if(selected != null){
-
+            if (selected != null) {
 
                 repository.delete(
                         selected.getGuestId()
                 );
-
 
                 loadData();
 
@@ -192,14 +142,8 @@ public class GuestView {
 
         });
 
-
-
-
-
-
         HBox form =
                 new HBox(10);
-
 
         form.getChildren()
                 .addAll(
@@ -216,10 +160,6 @@ public class GuestView {
 
                 );
 
-
-
-
-
         root.getChildren()
                 .addAll(
 
@@ -231,27 +171,18 @@ public class GuestView {
 
                 );
 
-
-
         return root;
 
 
     }
 
 
+    private void createColumns() {
 
-
-
-
-
-    private void createColumns(){
-
-
-        TableColumn<Guest,String> first =
+        TableColumn<Guest, String> first =
                 new TableColumn<>(
                         "Vorname"
                 );
-
 
         first.setCellValueFactory(
                 c ->
@@ -263,15 +194,10 @@ public class GuestView {
                         )
         );
 
-
-
-
-
-        TableColumn<Guest,String> last =
+        TableColumn<Guest, String> last =
                 new TableColumn<>(
                         "Nachname"
                 );
-
 
         last.setCellValueFactory(
                 c ->
@@ -283,14 +209,10 @@ public class GuestView {
                         )
         );
 
-
-
-
-        TableColumn<Guest,String> email =
+        TableColumn<Guest, String> email =
                 new TableColumn<>(
                         "Email"
                 );
-
 
         email.setCellValueFactory(
                 c ->
@@ -301,8 +223,6 @@ public class GuestView {
 
                         )
         );
-
-
 
         table.getColumns()
                 .addAll(
@@ -319,14 +239,7 @@ public class GuestView {
     }
 
 
-
-
-
-
-
-
-    private void loadData(){
-
+    private void loadData() {
 
         data =
                 FXCollections.observableArrayList(
@@ -335,15 +248,12 @@ public class GuestView {
 
                 );
 
-
-
         table.setItems(
                 data
         );
 
 
     }
-
 
 
 }

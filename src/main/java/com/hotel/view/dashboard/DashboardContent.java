@@ -27,13 +27,11 @@ public class DashboardContent {
         DashboardRefresh refresh =
                 new DashboardRefresh();
 
-
         Button refreshButton =
                 refresh.create(() -> {
 
                     root.getChildren()
                             .clear();
-
 
                     root.getChildren()
                             .addAll(
@@ -154,7 +152,8 @@ public class DashboardContent {
         return root;
 
     }
-    public VBox getRoot(){
+
+    public VBox getRoot() {
 
         return root;
 

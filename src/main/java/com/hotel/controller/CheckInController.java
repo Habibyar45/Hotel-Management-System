@@ -4,18 +4,13 @@ package com.hotel.controller;
 import com.hotel.service.CheckInService;
 
 
-
 public class CheckInController {
-
 
 
     private final CheckInService service;
 
 
-
-
-    public CheckInController(){
-
+    public CheckInController() {
 
         service =
                 new CheckInService();
@@ -24,15 +19,9 @@ public class CheckInController {
     }
 
 
-
-
-
-
-
     public void checkIn(
             int reservationId
-    ){
-
+    ) {
 
         service.checkIn(
                 reservationId
@@ -40,7 +29,6 @@ public class CheckInController {
 
 
     }
-
 
 
 }

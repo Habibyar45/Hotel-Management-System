@@ -9,18 +9,13 @@ import com.hotel.service.InvoiceService;
 import java.util.List;
 
 
-
 public class InvoiceController {
-
 
 
     private final InvoiceService service;
 
 
-
-
-    public InvoiceController(){
-
+    public InvoiceController() {
 
         service =
                 new InvoiceService();
@@ -28,18 +23,11 @@ public class InvoiceController {
     }
 
 
-
-
-
-
-
-
     public Invoice create(
 
             Reservation reservation
 
-    ){
-
+    ) {
 
         return service.createInvoice(
                 reservation
@@ -49,14 +37,7 @@ public class InvoiceController {
     }
 
 
-
-
-
-
-
-
-    public List<Invoice> getAll(){
-
+    public List<Invoice> getAll() {
 
         return service.getInvoices();
 
@@ -64,17 +45,11 @@ public class InvoiceController {
     }
 
 
-
-
-
-
-
     public void pay(
 
             int invoiceId
 
-    ){
-
+    ) {
 
         service.markAsPaid(
                 invoiceId
@@ -82,7 +57,6 @@ public class InvoiceController {
 
 
     }
-
 
 
 }

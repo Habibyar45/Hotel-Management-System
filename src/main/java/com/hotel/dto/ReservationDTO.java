@@ -4,7 +4,6 @@ package com.hotel.dto;
 import java.time.LocalDate;
 
 
-
 public class ReservationDTO {
 
 
@@ -17,66 +16,56 @@ public class ReservationDTO {
     private LocalDate checkOut;
 
 
-
-    public int getGuestId(){
+    public int getGuestId() {
 
         return guestId;
 
     }
 
 
-    public void setGuestId(int guestId){
+    public void setGuestId(int guestId) {
 
         this.guestId = guestId;
 
     }
 
 
-
-
-    public int getRoomId(){
+    public int getRoomId() {
 
         return roomId;
 
     }
 
 
-
-    public void setRoomId(int roomId){
+    public void setRoomId(int roomId) {
 
         this.roomId = roomId;
 
     }
 
 
-
-
-    public LocalDate getCheckIn(){
+    public LocalDate getCheckIn() {
 
         return checkIn;
 
     }
 
 
-
-    public void setCheckIn(LocalDate checkIn){
+    public void setCheckIn(LocalDate checkIn) {
 
         this.checkIn = checkIn;
 
     }
 
 
-
-
-    public LocalDate getCheckOut(){
+    public LocalDate getCheckOut() {
 
         return checkOut;
 
     }
 
 
-
-    public void setCheckOut(LocalDate checkOut){
+    public void setCheckOut(LocalDate checkOut) {
 
         this.checkOut = checkOut;
 

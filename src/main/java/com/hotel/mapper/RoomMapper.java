@@ -7,15 +7,12 @@ import com.hotel.model.RoomStatus;
 import com.hotel.model.RoomType;
 
 
-
 public class RoomMapper {
-
 
 
     public static Room toEntity(
             RoomDTO dto
-    ){
-
+    ) {
 
         return new Room(
 

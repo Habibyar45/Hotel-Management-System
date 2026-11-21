@@ -9,18 +9,13 @@ import com.hotel.util.InvoiceCalculator;
 import java.util.List;
 
 
-
 public class InvoiceService {
-
 
 
     private final InvoiceRepository repository;
 
 
-
-
-    public InvoiceService(){
-
+    public InvoiceService() {
 
         repository =
                 new InvoiceRepository();
@@ -28,18 +23,11 @@ public class InvoiceService {
     }
 
 
-
-
-
-
-
     public Invoice createInvoice(
 
             Reservation reservation
 
-    ){
-
-
+    ) {
 
         double amount =
 
@@ -48,8 +36,6 @@ public class InvoiceService {
                                 reservation
                         );
 
-
-
         Invoice invoice =
 
                 new Invoice(
@@ -57,11 +43,7 @@ public class InvoiceService {
                         amount
                 );
 
-
-
         repository.save(invoice);
-
-
 
         return invoice;
 
@@ -69,13 +51,7 @@ public class InvoiceService {
     }
 
 
-
-
-
-
-
-    public List<Invoice> getInvoices(){
-
+    public List<Invoice> getInvoices() {
 
         return repository.findAll();
 
@@ -83,18 +59,11 @@ public class InvoiceService {
     }
 
 
-
-
-
-
-
-
     public void markAsPaid(
 
             int invoiceId
 
-    ){
-
+    ) {
 
         repository.updatePaymentStatus(
 
@@ -106,7 +75,6 @@ public class InvoiceService {
 
 
     }
-
 
 
 }

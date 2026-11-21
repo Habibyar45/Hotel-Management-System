@@ -14,9 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
 
-
 public class RoomView {
-
 
 
     private final RoomRepository repository;
@@ -28,9 +26,7 @@ public class RoomView {
     private ObservableList<Room> data;
 
 
-
-    public RoomView(){
-
+    public RoomView() {
 
         repository =
                 new RoomRepository();
@@ -39,64 +35,40 @@ public class RoomView {
     }
 
 
-
-
-
-    public VBox getRoot(){
-
+    public VBox getRoot() {
 
         VBox root =
                 new VBox(20);
 
-
-
         root.setStyle(
                 "-fx-padding:30;"
         );
-
-
 
         Label title =
                 new Label(
                         "Zimmerverwaltung"
                 );
 
-
         title.setStyle(
                 "-fx-font-size:25px;"
         );
 
-
-
-
         table =
                 new TableView<>();
 
-
         createColumns();
-
 
         loadData();
 
-
-
-
-
         TextField roomNumber =
                 new TextField();
-
 
         roomNumber.setPromptText(
                 "Zimmernummer"
         );
 
-
-
-
-
         ComboBox<RoomType> type =
                 new ComboBox<>();
-
 
         type.getItems()
                 .addAll(
@@ -105,57 +77,34 @@ public class RoomView {
 
                 );
 
-
         type.setValue(
                 RoomType.SINGLE
         );
 
-
-
-
-
-
-
         TextField price =
                 new TextField();
-
 
         price.setPromptText(
                 "Preis"
         );
-
-
-
-
-
-
 
         Button save =
                 new Button(
                         "Zimmer speichern"
                 );
 
-
-
-        save.setOnAction(e->{
-
+        save.setOnAction(e -> {
 
             Room room =
                     new Room();
-
-
 
             room.setRoomNumber(
                     roomNumber.getText()
             );
 
-
-
             room.setRoomType(
                     type.getValue()
             );
-
-
 
             room.setPrice(
 
@@ -165,80 +114,51 @@ public class RoomView {
 
             );
 
-
-
             room.setStatus(
                     RoomStatus.AVAILABLE
             );
-
-
 
             repository.save(
                     room
             );
 
-
-
             loadData();
 
 
-
         });
-
-
-
-
-
-
-
 
         Button status =
                 new Button(
                         "Status ändern"
                 );
 
-
-
-        status.setOnAction(e->{
-
+        status.setOnAction(e -> {
 
             Room selected =
                     table.getSelectionModel()
                             .getSelectedItem();
 
-
-
-            if(selected != null){
-
-
+            if (selected != null) {
 
                 RoomStatus newStatus;
 
-
-
-                if(
+                if (
                         selected.getStatus()
                                 ==
                                 RoomStatus.AVAILABLE
-                ){
-
+                ) {
 
                     newStatus =
                             RoomStatus.OCCUPIED;
 
 
-                }
-                else{
-
+                } else {
 
                     newStatus =
                             RoomStatus.AVAILABLE;
 
 
                 }
-
-
-
 
                 repository.updateStatus(
 
@@ -248,8 +168,6 @@ public class RoomView {
 
                 );
 
-
-
                 loadData();
 
 
@@ -258,31 +176,18 @@ public class RoomView {
 
         });
 
-
-
-
-
-
-
         Button delete =
                 new Button(
                         "Zimmer löschen"
                 );
 
-
-
-        delete.setOnAction(e->{
-
-
+        delete.setOnAction(e -> {
 
             Room selected =
                     table.getSelectionModel()
                             .getSelectedItem();
 
-
-
-            if(selected != null){
-
+            if (selected != null) {
 
                 repository.delete(
 
@@ -290,25 +195,16 @@ public class RoomView {
 
                 );
 
-
                 loadData();
 
 
             }
 
 
-
         });
-
-
-
-
-
 
         HBox form =
                 new HBox(10);
-
-
 
         form.getChildren()
                 .addAll(
@@ -327,10 +223,6 @@ public class RoomView {
 
                 );
 
-
-
-
-
         root.getChildren()
                 .addAll(
 
@@ -342,29 +234,18 @@ public class RoomView {
 
                 );
 
-
-
         return root;
 
 
     }
 
 
+    private void createColumns() {
 
-
-
-
-
-
-    private void createColumns(){
-
-
-
-        TableColumn<Room,String> number =
+        TableColumn<Room, String> number =
                 new TableColumn<>(
                         "Zimmer"
                 );
-
 
         number.setCellValueFactory(
 
@@ -379,17 +260,10 @@ public class RoomView {
 
         );
 
-
-
-
-
-
-
-        TableColumn<Room,String> roomType =
+        TableColumn<Room, String> roomType =
                 new TableColumn<>(
                         "Typ"
                 );
-
 
         roomType.setCellValueFactory(
 
@@ -405,18 +279,10 @@ public class RoomView {
 
         );
 
-
-
-
-
-
-
-
-        TableColumn<Room,String> price =
+        TableColumn<Room, String> price =
                 new TableColumn<>(
                         "Preis"
                 );
-
 
         price.setCellValueFactory(
 
@@ -426,23 +292,16 @@ public class RoomView {
 
                                 c.getValue()
                                         .getPrice()
-                                        +" €"
+                                        + " €"
 
                         )
 
         );
 
-
-
-
-
-
-
-        TableColumn<Room,String> status =
+        TableColumn<Room, String> status =
                 new TableColumn<>(
                         "Status"
                 );
-
 
         status.setCellValueFactory(
 
@@ -457,10 +316,6 @@ public class RoomView {
                         )
 
         );
-
-
-
-
 
         table.getColumns()
                 .addAll(
@@ -479,13 +334,7 @@ public class RoomView {
     }
 
 
-
-
-
-
-
-    private void loadData(){
-
+    private void loadData() {
 
         data =
                 FXCollections.observableArrayList(
@@ -494,15 +343,12 @@ public class RoomView {
 
                 );
 
-
-
         table.setItems(
                 data
         );
 
 
     }
-
 
 
 }

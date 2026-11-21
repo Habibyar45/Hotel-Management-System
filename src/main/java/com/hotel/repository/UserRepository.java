@@ -9,7 +9,6 @@ import com.hotel.model.UserRole;
 import java.sql.*;
 
 
-
 public class UserRepository {
 
 
@@ -18,59 +17,48 @@ public class UserRepository {
         Benutzer anhand Username suchen
     */
 
-    public User findByUsername(String username){
-
+    public User findByUsername(String username) {
 
         String sql =
                 """
-                SELECT *
-                FROM users
-                WHERE username=?
-                """;
+                        SELECT *
+                        FROM users
+                        WHERE username=?
+                        """;
 
-
-        try(
+        try (
                 Connection connection =
                         DatabaseManager.getConnection();
 
                 PreparedStatement statement =
                         connection.prepareStatement(sql)
 
-        ){
-
+        ) {
 
             statement.setString(
                     1,
                     username
             );
 
-
             ResultSet result =
                     statement.executeQuery();
 
-
-
-            if(result.next()){
-
+            if (result.next()) {
 
                 User user =
                         new User();
-
 
                 user.setUsername(
                         result.getString("username")
                 );
 
-
                 user.setPassword(
                         result.getString("password")
                 );
 
-
                 user.setFullName(
                         result.getString("full_name")
                 );
-
 
                 user.setRole(
                         UserRole.valueOf(
@@ -78,19 +66,16 @@ public class UserRepository {
                         )
                 );
 
-
                 return user;
 
             }
 
 
-        }
-        catch(SQLException e){
+        } catch (SQLException e) {
 
             e.printStackTrace();
 
         }
-
 
         return null;
 
@@ -105,71 +90,55 @@ public class UserRepository {
 
     public void save(
             User user
-    ){
-
+    ) {
 
         String sql =
                 """
-                INSERT INTO users
-                (
-                username,
-                password,
-                full_name,
-                role
-                )
-    
-                VALUES(?,?,?,?)
-                """;
+                        INSERT INTO users
+                        (
+                        username,
+                        password,
+                        full_name,
+                        role
+                        )
+                        
+                        VALUES(?,?,?,?)
+                        """;
 
-
-
-        try(
+        try (
 
                 Connection connection =
                         DatabaseManager.getConnection();
 
-
                 PreparedStatement statement =
                         connection.prepareStatement(sql)
 
-        ){
-
-
+        ) {
 
             statement.setString(
                     1,
                     user.getUsername()
             );
 
-
-
             statement.setString(
                     2,
                     user.getPassword()
             );
-
-
 
             statement.setString(
                     3,
                     user.getFullName()
             );
 
-
-
             statement.setString(
                     4,
                     user.getRole().name()
             );
 
-
-
             statement.executeUpdate();
 
 
-
-        }
-        catch(SQLException e){
+        } catch (SQLException e) {
 
             e.printStackTrace();
 

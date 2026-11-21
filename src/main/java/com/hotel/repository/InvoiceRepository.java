@@ -13,44 +13,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class InvoiceRepository {
-
 
 
     public void save(
             Invoice invoice
-    ){
-
+    ) {
 
         String sql =
                 """
-                INSERT INTO invoices
-        
-                (
-                reservation_id,
-                amount,
-                payment_status,
-                created_at
-                )
-        
-                VALUES(?,?,?,?)
-        
-                """;
+                        INSERT INTO invoices
+                        
+                        (
+                        reservation_id,
+                        amount,
+                        payment_status,
+                        created_at
+                        )
+                        
+                        VALUES(?,?,?,?)
+                        
+                        """;
 
-
-
-        try(
+        try (
 
                 Connection connection =
                         DatabaseManager.getConnection();
 
-
                 PreparedStatement statement =
                         connection.prepareStatement(sql)
 
-        ){
-
+        ) {
 
             statement.setInt(
 
@@ -62,8 +55,6 @@ public class InvoiceRepository {
 
             );
 
-
-
             statement.setDouble(
 
                     2,
@@ -71,8 +62,6 @@ public class InvoiceRepository {
                     invoice.getAmount()
 
             );
-
-
 
             statement.setString(
 
@@ -84,8 +73,6 @@ public class InvoiceRepository {
 
             );
 
-
-
             statement.setString(
 
                     4,
@@ -96,13 +83,10 @@ public class InvoiceRepository {
 
             );
 
-
-
             statement.executeUpdate();
 
 
-        }
-        catch(SQLException e){
+        } catch (SQLException e) {
 
             e.printStackTrace();
 
@@ -112,98 +96,80 @@ public class InvoiceRepository {
     }
 
 
-
-
-
-
-
-    public List<Invoice> findAll(){
-
+    public List<Invoice> findAll() {
 
         List<Invoice> invoices =
                 new ArrayList<>();
 
-
-
         String sql =
                 """
-                SELECT
-            
-            
-                i.invoice_id,
-                i.amount,
-                i.payment_status,
-                i.created_at,
-            
-            
-                r.reservation_id,
-                r.check_in,
-                r.check_out,
-            
-            
-                g.guest_id,
-                g.first_name,
-                g.last_name,
-            
-            
-                ro.room_id,
-                ro.room_number,
-                ro.price
-            
-            
-            
-                FROM invoices i
-            
-            
-            
-                JOIN reservations r
-            
-                ON i.reservation_id =
-                   r.reservation_id
-            
-            
-            
-                JOIN guests g
-            
-                ON r.guest_id =
-                   g.guest_id
-            
-            
-            
-                JOIN rooms ro
-            
-                ON r.room_id =
-                   ro.room_id
-            
-                """;
+                        SELECT
+                        
+                        
+                        i.invoice_id,
+                        i.amount,
+                        i.payment_status,
+                        i.created_at,
+                        
+                        
+                        r.reservation_id,
+                        r.check_in,
+                        r.check_out,
+                        
+                        
+                        g.guest_id,
+                        g.first_name,
+                        g.last_name,
+                        
+                        
+                        ro.room_id,
+                        ro.room_number,
+                        ro.price
+                        
+                        
+                        
+                        FROM invoices i
+                        
+                        
+                        
+                        JOIN reservations r
+                        
+                        ON i.reservation_id =
+                           r.reservation_id
+                        
+                        
+                        
+                        JOIN guests g
+                        
+                        ON r.guest_id =
+                           g.guest_id
+                        
+                        
+                        
+                        JOIN rooms ro
+                        
+                        ON r.room_id =
+                           ro.room_id
+                        
+                        """;
 
-
-
-
-        try(
+        try (
 
                 Connection connection =
                         DatabaseManager.getConnection();
 
-
                 Statement statement =
                         connection.createStatement();
-
 
                 ResultSet result =
                         statement.executeQuery(sql)
 
-        ){
+        ) {
 
-
-
-            while(result.next()){
-
+            while (result.next()) {
 
                 Invoice invoice =
                         new Invoice();
-
-
 
                 invoice.setInvoiceId(
 
@@ -213,8 +179,6 @@ public class InvoiceRepository {
 
                 );
 
-
-
                 invoice.setAmount(
 
                         result.getDouble(
@@ -222,8 +186,6 @@ public class InvoiceRepository {
                         )
 
                 );
-
-
 
                 invoice.setPaymentStatus(
 
@@ -237,8 +199,6 @@ public class InvoiceRepository {
 
                 );
 
-
-
                 invoice.setCreatedAt(
 
                         result.getDate(
@@ -248,14 +208,10 @@ public class InvoiceRepository {
 
                 );
 
-
-
                 // Reservierung laden
 
                 Reservation reservation =
                         new Reservation();
-
-
 
                 reservation.setReservationId(
 
@@ -264,8 +220,6 @@ public class InvoiceRepository {
                         )
 
                 );
-
-
 
                 reservation.setCheckIn(
 
@@ -276,8 +230,6 @@ public class InvoiceRepository {
 
                 );
 
-
-
                 reservation.setCheckOut(
 
                         result.getDate(
@@ -287,14 +239,10 @@ public class InvoiceRepository {
 
                 );
 
-
-
                 // Gast
 
                 Guest guest =
                         new Guest();
-
-
 
                 guest.setFirstName(
 
@@ -304,7 +252,6 @@ public class InvoiceRepository {
 
                 );
 
-
                 guest.setLastName(
 
                         result.getString(
@@ -313,14 +260,10 @@ public class InvoiceRepository {
 
                 );
 
-
-
                 // Zimmer
 
                 Room room =
                         new Room();
-
-
 
                 room.setRoomNumber(
 
@@ -330,7 +273,6 @@ public class InvoiceRepository {
 
                 );
 
-
                 room.setPrice(
 
                         result.getDouble(
@@ -339,24 +281,17 @@ public class InvoiceRepository {
 
                 );
 
-
-
                 reservation.setGuest(
                         guest
                 );
-
 
                 reservation.setRoom(
                         room
                 );
 
-
-
                 invoice.setReservation(
                         reservation
                 );
-
-
 
                 invoices.add(invoice);
 
@@ -364,26 +299,16 @@ public class InvoiceRepository {
             }
 
 
-
-        }
-        catch(SQLException e){
+        } catch (SQLException e) {
 
             e.printStackTrace();
 
         }
 
-
-
         return invoices;
 
 
     }
-
-
-
-
-
-
 
 
     public void updatePaymentStatus(
@@ -392,33 +317,27 @@ public class InvoiceRepository {
 
             PaymentStatus status
 
-    ){
-
-
+    ) {
 
         String sql =
                 """
-                UPDATE invoices
-        
-                SET payment_status=?
-        
-                WHERE invoice_id=?
-        
-                """;
+                        UPDATE invoices
+                        
+                        SET payment_status=?
+                        
+                        WHERE invoice_id=?
+                        
+                        """;
 
-
-
-        try(
+        try (
 
                 Connection connection =
                         DatabaseManager.getConnection();
 
-
                 PreparedStatement statement =
                         connection.prepareStatement(sql)
 
-        ){
-
+        ) {
 
             statement.setString(
 
@@ -428,8 +347,6 @@ public class InvoiceRepository {
 
             );
 
-
-
             statement.setInt(
 
                     2,
@@ -438,14 +355,10 @@ public class InvoiceRepository {
 
             );
 
-
-
             statement.executeUpdate();
 
 
-
-        }
-        catch(SQLException e){
+        } catch (SQLException e) {
 
             e.printStackTrace();
 
@@ -453,7 +366,6 @@ public class InvoiceRepository {
 
 
     }
-
 
 
 }

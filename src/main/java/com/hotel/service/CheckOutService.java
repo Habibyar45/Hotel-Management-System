@@ -8,9 +8,7 @@ import com.hotel.repository.CheckOutRepository;
 import com.hotel.repository.RoomRepository;
 
 
-
 public class CheckOutService {
-
 
 
     private final CheckOutRepository repository;
@@ -22,20 +20,16 @@ public class CheckOutService {
     private final ReservationRepository reservationRepository;
 
 
-    public CheckOutService(){
-
+    public CheckOutService() {
 
         repository =
                 new CheckOutRepository();
 
-
         roomRepository =
                 new RoomRepository();
 
-
         invoiceService =
                 new InvoiceService();
-
 
         reservationRepository =
                 new ReservationRepository();
@@ -44,16 +38,10 @@ public class CheckOutService {
     }
 
 
-
-
-
-
-
     public void checkOut(
             int reservationId,
             int roomId
-    ){
-
+    ) {
 
         // 1. Reservierung auf CHECKED_OUT setzen
 
@@ -65,8 +53,6 @@ public class CheckOutService {
 
         );
 
-
-
         // 2. Zimmer wieder verfügbar machen
 
         roomRepository.updateStatus(
@@ -77,15 +63,11 @@ public class CheckOutService {
 
         );
 
-
-
         // 3. Reservierung laden
 
         Reservation reservation =
                 reservationRepository
                         .findById(reservationId);
-
-
 
         // 4. Rechnung erstellen
 

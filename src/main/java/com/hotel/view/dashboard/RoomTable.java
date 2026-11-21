@@ -10,18 +10,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 
-
 public class RoomTable {
 
 
-
-    public TableView<Room> create(){
-
-
+    public TableView<Room> create() {
 
         TableView<Room> table =
                 new TableView<>();
-
 
         table.setPrefHeight(250);
 
@@ -36,11 +31,8 @@ public class RoomTable {
          *
          */
 
-
-        TableColumn<Room,String> numberColumn =
+        TableColumn<Room, String> numberColumn =
                 new TableColumn<>("Zimmer");
-
-
 
         numberColumn.setCellValueFactory(cell ->
 
@@ -52,7 +44,6 @@ public class RoomTable {
                 )
 
         );
-
 
         numberColumn.setPrefWidth(100);
 
@@ -66,11 +57,8 @@ public class RoomTable {
          *
          */
 
-
-        TableColumn<Room,String> typeColumn =
+        TableColumn<Room, String> typeColumn =
                 new TableColumn<>("Typ");
-
-
 
         typeColumn.setCellValueFactory(cell ->
 
@@ -83,7 +71,6 @@ public class RoomTable {
                 )
 
         );
-
 
         typeColumn.setPrefWidth(120);
 
@@ -99,11 +86,8 @@ public class RoomTable {
          *
          */
 
-
-        TableColumn<Room,String> priceColumn =
+        TableColumn<Room, String> priceColumn =
                 new TableColumn<>("Preis");
-
-
 
         priceColumn.setCellValueFactory(cell ->
 
@@ -122,7 +106,6 @@ public class RoomTable {
 
         );
 
-
         priceColumn.setPrefWidth(120);
 
 
@@ -138,11 +121,8 @@ public class RoomTable {
          *
          */
 
-
-        TableColumn<Room,String> statusColumn =
+        TableColumn<Room, String> statusColumn =
                 new TableColumn<>("Status");
-
-
 
         statusColumn.setCellValueFactory(cell ->
 
@@ -156,12 +136,7 @@ public class RoomTable {
 
         );
 
-
         statusColumn.setPrefWidth(150);
-
-
-
-
 
         table.getColumns()
                 .addAll(
@@ -187,11 +162,8 @@ public class RoomTable {
          *
          */
 
-
         RoomRepository repository =
                 new RoomRepository();
-
-
 
         table.getItems()
                 .addAll(
@@ -200,16 +172,10 @@ public class RoomTable {
 
                 );
 
-
-
-
-
         return table;
 
 
-
     }
-
 
 
 }

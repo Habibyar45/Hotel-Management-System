@@ -5,17 +5,13 @@ import com.hotel.model.ReservationStatus;
 import com.hotel.repository.CheckInRepository;
 
 
-
 public class CheckInService {
-
 
 
     private final CheckInRepository repository;
 
 
-
-    public CheckInService(){
-
+    public CheckInService() {
 
         repository =
                 new CheckInRepository();
@@ -24,16 +20,9 @@ public class CheckInService {
     }
 
 
-
-
-
-
-
     public void checkIn(
             int reservationId
-    ){
-
-
+    ) {
 
         repository.updateReservationStatus(
 
@@ -45,7 +34,6 @@ public class CheckInService {
 
 
     }
-
 
 
 }
